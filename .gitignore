@@ -1,0 +1,15 @@
+.idea/
+__pycache__/
+.ipynb_checkpoints/
+combined/
+dataset/
+dlib_eyelid_detector/
+Lagophthalmus Raw Images/
+testing/
+dataset.zip
+detect_blinks.py
+detect_half_face.py
+*.h5
+*.json
+Lagophthalmus.rar
+
