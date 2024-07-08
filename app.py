@@ -47,9 +47,9 @@ with placeholder.container():
     st.subheader("Example Images")
     # Display example images with captions
     example_images = [
-        "combined/IMG_3084.jpeg",
-        "combined/IMG_3085.jpg",
-        "combined/IMG_3086.jpeg",
+        "demo/IMG_3084.jpeg",
+        "demo/IMG_3085.jpg",
+        "demo/IMG_3086.jpeg",
     ]
 
     cols = st.columns(3)
