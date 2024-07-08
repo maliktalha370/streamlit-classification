@@ -71,6 +71,5 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
     # Classify image
-    st.write("Classifying...")
     prediction = run_inference(model, image)
     st.write(f"Status: **{prediction}**")
