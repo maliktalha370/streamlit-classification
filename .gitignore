@@ -9,7 +9,6 @@ testing/
 dataset.zip
 detect_blinks.py
 detect_half_face.py
-*.h5
 *.json
 Lagophthalmus.rar
 
