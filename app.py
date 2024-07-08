@@ -48,7 +48,7 @@ with placeholder.container():
     # Display example images with captions
     example_images = [
         "demo/IMG_3084.jpeg",
-        "demo/IMG_3085.jpg",
+        "demo/IMG_3085.JPG",
         "demo/IMG_3086.jpeg",
     ]
 
