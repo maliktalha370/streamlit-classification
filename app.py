@@ -1,7 +1,6 @@
 import efficientnet.keras as efn
 import streamlit as st
 import numpy as np
-import wandb
 import os
 
 from constants import *
@@ -25,16 +24,20 @@ def run_inference(model, img):
     # Interpret the prediction
     return 'Lagophthalmos' if prediction[0][0] < 0.5 else 'Normal'
 
-def download_model(root_path):
+def download_model_wandb(root_path):
+    import wandb
     os.system(f'wandb login {wandb_api_key}')
-
     # wandb.init()
     run = wandb.init(settings=wandb.Settings(start_method="fork"))
     artifact = run.use_artifact('malitkalha370/Maram-Lagophthalmos/Models:v0', type='model')
     artifact_dir = artifact.download(root_path)
 
+
+def download_model(model_link):
+    os.system(f'gdown {model_link}')
+
 if not os.path.exists(model_path):
-    download_model(root_path = './')
+    download_model(model_link)
 
 import time
 t1 = time.time()
