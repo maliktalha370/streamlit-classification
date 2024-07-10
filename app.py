@@ -26,7 +26,8 @@ def run_inference(model, img):
     return 'Lagophthalmos' if prediction[0][0] < 0.5 else 'Normal'
 
 def download_model(root_path):
-    wandb.login(wandb_api_key)
+    os.system(f'wandb login {wandb_api_key}')
+    # wandb.login(wandb_api_key)
     run = wandb.init()
     artifact = run.use_artifact(wandb_artifact_path, type='model')
     artifact_dir = artifact.download(root_path)
