@@ -1,8 +1,10 @@
+import efficientnet.keras as efn
 import streamlit as st
 import numpy as np
+
+from constants import *
 from PIL import Image
 from tensorflow.keras.models import load_model
-import efficientnet.keras as efn
 
 # Function to preprocess the image
 def preprocess_image(image, target_size=(224, 224)):
@@ -21,10 +23,19 @@ def run_inference(model, img):
     # Interpret the prediction
     return 'Lagophthalmos' if prediction[0][0] < 0.5 else 'Normal'
 
+def download_model(root_path):
+    wandb.login(wandb_api_key)
+    run = wandb.init()
+    artifact = run.use_artifact(wandb_artifact_path, type='model')
+    artifact_dir = artifact.download(root_path)
+
+if not os.path.exists(model_path):
+    download_model(root_path = './')
+
 import time
 t1 = time.time()
 # Load the model
-model = load_model('keras_model.h5')
+model = load_model(model_path)
 
 # Streamlit app
 st.title("Lagophthalmos Classification Portal")
