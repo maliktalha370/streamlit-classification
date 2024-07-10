@@ -11,4 +11,5 @@ detect_blinks.py
 detect_half_face.py
 *.json
 Lagophthalmus.rar
+*.h5
 
