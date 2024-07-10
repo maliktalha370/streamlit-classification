@@ -28,7 +28,8 @@ def run_inference(model, img):
 def download_model(root_path):
     os.system(f'wandb login {wandb_api_key}')
 
-    run = wandb.init()
+    # wandb.init()
+    run = wandb.init(settings=wandb.Settings(start_method="fork"))
     artifact = run.use_artifact('malitkalha370/Maram-Lagophthalmos/Models:v0', type='model')
     artifact_dir = artifact.download(root_path)
 
