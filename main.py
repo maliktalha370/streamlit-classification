@@ -1,12 +1,14 @@
 import efficientnet.keras as efn
 import numpy as np
-import time
 import os
 
 from constants import *
 from PIL import Image
 from tensorflow.keras.models import load_model
 
+def test_tensorflow():
+    import tensorflow as tf
+    print('GPU Available ', tf.test.is_gpu_available())
 # Function to preprocess the image
 def preprocess_image(image, target_size=(224, 224)):
     # Convert the image to a numpy array
@@ -25,10 +27,10 @@ def run_inference(model, img):
 def download_model(model_link):
     os.system(f'gdown {model_link}')
 
+test_tensorflow()
 if not os.path.exists(model_path):
     download_model(model_link)
 
-t1 = time.time()
 # Load the model
 model = load_model(model_path)
 uploaded_file = 'demo/IMG_3085.JPG'
