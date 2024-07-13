@@ -11,3 +11,4 @@ example_images = [
     "demo/IMG_3085.JPG",
     "demo/IMG_3086.jpeg",
 ]
+gpu_limit = 6144
