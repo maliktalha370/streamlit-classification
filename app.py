@@ -3,8 +3,9 @@ import streamlit as st
 import numpy as np
 import os
 
-from constants import *
 from PIL import Image
+from constants import *
+from datetime import datetime
 from tensorflow.keras.models import load_model
 
 # Function to preprocess the image
@@ -29,7 +30,7 @@ def download_model_wandb(root_path):
     os.system(f'wandb login {wandb_api_key}')
     # wandb.init()
     run = wandb.init(settings=wandb.Settings(start_method="fork"))
-    artifact = run.use_artifact('malitkalha370/Maram-Lagophthalmos/Models:v0', type='model')
+    artifact = run.use_artifact(wandb_artifact_path, type='model')
     artifact_dir = artifact.download(root_path)
 
 
@@ -63,13 +64,6 @@ with placeholder.container():
     """)
 
     st.subheader("Example Images")
-    # Display example images with captions
-    example_images = [
-        "demo/IMG_3084.jpeg",
-        "demo/IMG_3085.JPG",
-        "demo/IMG_3086.jpeg",
-    ]
-
     cols = st.columns(3)
     for i, img_path in enumerate(example_images):
         with cols[i]:
@@ -88,6 +82,17 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_column_width=True)
 
-    # Classify image
-    prediction = run_inference(model, image)
+    # Classify image with spinner
+    with st.spinner('Processing the image...'):
+        prediction = run_inference(model, image)
+
     st.write(f"Status: **{prediction}**")
+
+    # Save the uploaded image with a timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    image_filename = f"{output_folder}uploaded_image_{timestamp}.png"
+    image.save(image_filename)
+
+    # Add footer
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("<footer><p>Developed by <strong>Dr Maram Alnefaie - Ophthalmologist</strong></p></footer>", unsafe_allow_html=True)
