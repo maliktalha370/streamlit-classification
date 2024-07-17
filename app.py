@@ -58,7 +58,7 @@ import time
 t1 = time.time()
 # Load the model
 model = load_model(model_path)
-
+os.makedirs(output_folder, exist_ok = True)
 # Streamlit app
 st.title("Lagophthalmos Classification Portal")
 
