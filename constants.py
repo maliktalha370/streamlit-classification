@@ -13,7 +13,7 @@ example_images = [
     "./lagophthalmos/demo/IMG_3085.JPG",
     "./lagophthalmos/demo/IMG_3086.jpeg",
 ]
-gpu_limit = 6144
+gpu_limit = 5000
 
 
 # Bells
