@@ -111,7 +111,7 @@ def detect_bells(detection, image, segment):
                 return False
 
 
-def main(testset_dir, debug_mode=True):
+def main(testset_dir, debug_mode=False):
     setup_logging(debug_mode)
 
     accuracy_list = 0
@@ -132,7 +132,7 @@ def main(testset_dir, debug_mode=True):
 def run_app():
     # Initialize models
     test_and_limit_tensorflow()
-    setup_logging(debug_mode=True)
+    setup_logging(debug_mode=False)
 
     if not os.path.exists(YOLO_MODEL_PATH):
         logging.info(f"Downloading YOLO Model")
