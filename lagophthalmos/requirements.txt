@@ -7,3 +7,4 @@ tensorflow==2.15
 efficientnet==1.1.1
 wandb
 gdown
+ultralytics==8.2.78
