@@ -38,7 +38,8 @@ def run_app():
     test_and_limit_tensorflow()
 
     if not os.path.exists(model_path):
-        download_model(model_link, model_path)
+        download_model(model_link, file_path = model_path)
+
 
     import time
     t1 = time.time()
