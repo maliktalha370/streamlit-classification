@@ -177,9 +177,9 @@ def run_app():
         with st.spinner('Processing the image...'):
             detection = model(image, verbose=False)
             if detect_bells(detection=detection, image=image, segment=segment):
-                st.write(f"Status: **Good Bells Found !**")
-            else:
                 st.write(f"Status: **Bad Bells Found !**")
+            else:
+                st.write(f"Status: **Good Bells Found !**")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         image_filename = f"{bells_output_folder}uploaded_image_{timestamp}.png"
         cv2.imwrite(image_filename, image )
