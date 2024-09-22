@@ -26,7 +26,7 @@ def detect_bells(detection, image, segment):
         boxes = r.boxes
         if (np.array(boxes.cls.cpu())[0] == 0 and np.array(boxes.conf.cpu())[0] > 0.8):
             logging.debug('TRUE EYE-----')
-            logging.debug(f"Confidence: {np.array(boxes.conf)[0]}")
+            logging.debug(f"Confidence: {np.array(boxes.conf.cpu())[0]}")
             trueEye = True
 
         for i, b in enumerate(boxes.xyxy):
